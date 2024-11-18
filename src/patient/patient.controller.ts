@@ -21,15 +21,14 @@ export class PatientController {
         return this._patientService.findAll();
     }
 
-    @Get(":id")
+    @Get("id/:id")
     findById(@Param("id", ParseIntPipe) id: number): Promise<Patient> | null {
         return this._patientService.findById(id);
     }
 
     @Get("/q")
     async findBy(@Query() query: QueryPatientDto) {
-        console.log(query);
-        return query; // Retourne les paramètres pour vérifier
+        return this._patientService.findByQuery(query);
     }
 
     @Post()

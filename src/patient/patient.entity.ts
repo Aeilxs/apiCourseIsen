@@ -1,13 +1,16 @@
-import { IsString, Length, IsDate, IsOptional, IsNotEmpty, IsDateString } from "class-validator";
+import { IsString, Length, IsOptional, IsNotEmpty, IsDateString } from "class-validator";
+import { IsUniqueSSN } from "@decorators";
 import {
     Entity,
     Column,
     PrimaryGeneratedColumn,
     CreateDateColumn,
     UpdateDateColumn,
+    Unique,
 } from "typeorm";
 
 @Entity()
+@Unique(["ssn"])
 export class Patient {
     @PrimaryGeneratedColumn()
     id: number;
@@ -25,6 +28,7 @@ export class Patient {
     @Column()
     @IsString()
     @Length(15, 15, { message: "SSN must be exactly 15 characters long" })
+    @IsUniqueSSN({ message: "SSN must be unique" })
     ssn: string;
 
     @Column({ type: "date" })
