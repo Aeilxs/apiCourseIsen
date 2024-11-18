@@ -1,5 +1,4 @@
 import { IsString, Length, IsOptional, IsNotEmpty, IsDateString } from "class-validator";
-import { IsUniqueSSN } from "@decorators";
 import {
     Entity,
     Column,
@@ -28,7 +27,6 @@ export class Patient {
     @Column()
     @IsString()
     @Length(15, 15, { message: "SSN must be exactly 15 characters long" })
-    @IsUniqueSSN({ message: "SSN must be unique" })
     ssn: string;
 
     @Column({ type: "date" })
