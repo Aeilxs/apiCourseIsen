@@ -1,0 +1,15 @@
+services:
+    keycloak:
+        image: quay.io/keycloak/keycloak:latest
+        environment:
+            - KC_HTTP_ENABLED=true
+            - KC_HTTPS_ENABLED=false
+            - KC_SSL_REQUIRED=NONE
+            - KC_PROXY=edge
+            - KC_BOOTSTRAP_ADMIN_USERNAME=admin
+            - KC_BOOTSTRAP_ADMIN_PASSWORD=admin
+        ports:
+            - "8080:8080"
+        container_name: keycloak
+        command: ["start-dev"]
+        network_mode: host # ça m'apprendra ...

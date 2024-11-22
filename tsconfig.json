@@ -11,7 +11,7 @@
     "outDir": "./dist",
     "baseUrl": "./",
     "paths": {
-      "@decorators": ["src/common/decorators"]
+      "@interceptors": ["src/common/interceptors"]
     },
     "incremental": true,
     "skipLibCheck": true,
